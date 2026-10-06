@@ -4,3 +4,31 @@
 /android/.idea/
 /android/app/build/
 /android/build/
+
+# Dependencias
+/node_modules
+
+# Angular / Ionic Build
+/www
+/dist
+/platforms
+/plugins
+/.angular
+/.ionic
+
+# Capacitor
+/android
+/ios
+
+# Entornos y secretos
+.env
+.env.*
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/*
+!.vscode/extensions.json
+.idea
