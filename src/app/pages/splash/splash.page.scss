@@ -1,0 +1,40 @@
+.splash-content {
+  --background: #000000;
+}
+
+.splash-layout {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 24px;
+  text-align: center;
+}
+
+.splash-logo {
+  width: min(80%, 300px);
+  height: auto;
+  object-fit: contain;
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+ion-spinner {
+  width: 45px;
+  height: 45px;
+  --color: #e31820;
+}
+
+.loader p {
+  margin: 0;
+  color: #888888;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+}

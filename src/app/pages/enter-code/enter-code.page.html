@@ -1,0 +1,40 @@
+<ion-content class="photo-background enter-code-content" [fullscreen]="true">
+  <div class="dark-overlay" aria-hidden="true"></div>
+  <ion-button
+    class="back-button"
+    fill="clear"
+    aria-label="Volver al inicio de sesión"
+    (click)="goBack()"
+  >
+    <ion-icon name="arrow-back" aria-hidden="true"></ion-icon>
+  </ion-button>
+
+  <main class="code-layout">
+    <img class="code-logo" src="assets/logo.png" alt="Xtreme Group Gym">
+    <p class="instruction">Ingresa tu código de acceso</p>
+    <ion-input
+      class="code-input"
+      type="text"
+      inputmode="text"
+      maxlength="32"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="CODE-XXXX"
+      aria-label="Código de acceso"
+      [(ngModel)]="accessCode"
+      (keyup.enter)="enter()"
+    ></ion-input>
+    @if (errorMessage) {
+      <p class="error-message" role="alert">{{ errorMessage }}</p>
+    }
+    <ion-button
+      class="primary-button enter-button"
+      expand="block"
+      [disabled]="isLoading"
+      (click)="enter()"
+    >
+      {{ isLoading ? 'VALIDANDO...' : 'ENTRAR' }}
+    </ion-button>
+  </main>
+</ion-content>

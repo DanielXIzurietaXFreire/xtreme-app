@@ -1,0 +1,70 @@
+.gate-content {
+  --background: #000000;
+}
+
+.gate-layout {
+  --gate-accent: #e31820;
+
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 50% 55%, color-mix(in srgb, var(--gate-accent) 12%, transparent), transparent 48%),
+    linear-gradient(145deg, #000000, #111111);
+  text-align: center;
+}
+
+.gate-layout.allowed {
+  --gate-accent: #39ff14;
+}
+
+.gate-layout.denied {
+  --gate-accent: #ff3038;
+}
+
+.gate-logo {
+  width: min(80%, 300px);
+  height: auto;
+  object-fit: contain;
+}
+
+.gate-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.gate-status p {
+  margin: 0;
+  color: var(--gate-accent);
+  font-size: clamp(22px, 6vw, 30px);
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 10px color-mix(in srgb, var(--gate-accent) 70%, transparent),
+    0 0 28px color-mix(in srgb, var(--gate-accent) 40%, transparent);
+}
+
+.gate-status ion-spinner {
+  width: 46px;
+  height: 46px;
+  --color: #e31820;
+}
+
+.gate-status ion-icon {
+  color: var(--gate-accent);
+  font-size: 72px;
+  filter: drop-shadow(0 0 12px color-mix(in srgb, var(--gate-accent) 65%, transparent));
+}
+
+.checking p {
+  color: #999999;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+}

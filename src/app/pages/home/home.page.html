@@ -1,0 +1,141 @@
+<ion-content class="home-content" [fullscreen]="true">
+  <main class="home-shell">
+    <ion-grid fixed>
+      <ion-row class="topbar">
+        <ion-col size="auto" class="brand">
+          <img src="assets/logo.png" alt="Xtreme Group Gym" class="brand-logo">
+        </ion-col>
+      </ion-row>
+
+      @if (noticeMessage) {
+        <ion-row>
+          <ion-col>
+            <p class="session-notice" role="status">{{ noticeMessage }}</p>
+          </ion-col>
+        </ion-row>
+      }
+
+      @if (cliente) {
+        <ion-row class="welcome-row">
+          <ion-col>
+            <p class="eyebrow">XTREME GROUP GYM</p>
+            <h1>Hola, <span>{{ firstName }}</span></h1>
+            <p class="welcome-subtitle">Tu próximo entrenamiento te espera.</p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="dashboard-row">
+          <ion-col size="12" size-lg="5">
+            <ion-card class="glass-card access-card">
+              <ion-card-content>
+                <div class="access-heading">
+                  <div>
+                    <p class="eyebrow">TU MEMBRESÍA</p>
+                    <h2>Días de acceso</h2>
+                  </div>
+                  <span class="access-indicator" aria-hidden="true"></span>
+                </div>
+
+                @if (countdownAvailable) {
+                  <div
+                    class="countdown"
+                    [class.countdown-critical]="countdown.days <= 3"
+                    role="timer"
+                    aria-label="Cuenta regresiva para la fecha de vencimiento"
+                  >
+                    <div class="countdown-unit countdown-days">
+                      <span class="countdown-value">{{ countdown.days }}</span>
+                      <span class="countdown-label">{{ countdown.days === 1 ? 'día' : 'días' }}</span>
+                    </div>
+                    <span class="countdown-separator" aria-hidden="true">:</span>
+                    <div class="countdown-unit">
+                      <span class="countdown-value">{{ countdown.hours | number: '2.0-0' }}</span>
+                      <span class="countdown-label">horas</span>
+                    </div>
+                    <span class="countdown-separator" aria-hidden="true">:</span>
+                    <div class="countdown-unit">
+                      <span class="countdown-value">{{ countdown.minutes | number: '2.0-0' }}</span>
+                      <span class="countdown-label">min</span>
+                    </div>
+                    <span class="countdown-separator" aria-hidden="true">:</span>
+                    <div class="countdown-unit countdown-seconds">
+                      <span class="countdown-value">{{ countdown.seconds | number: '2.0-0' }}</span>
+                      <span class="countdown-label">seg</span>
+                    </div>
+                  </div>
+                } @else {
+                  <p class="countdown-unavailable">Fecha de vencimiento no disponible</p>
+                }
+                <p class="access-caption">
+                  {{ countdownExpired ? 'Tu membresía llegó a su fecha de vencimiento' : countdownAvailable && countdown.days <= 3 ? 'Tu acceso está por vencer' : 'Tiempo restante para tu próximo entrenamiento' }}
+                </p>
+
+                <ion-progress-bar
+                  class="access-progress"
+                  [value]="accessProgress"
+                  aria-label="Progreso de días de acceso, escala de 30 días"
+                ></ion-progress-bar>
+                <div class="progress-labels">
+                  <span>0 días</span>
+                  <span>30 días</span>
+                </div>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+
+          <ion-col size="12" size-lg="7">
+            <ion-card class="glass-card details-card">
+              <ion-card-content>
+                <div class="details-heading">
+                  <div>
+                    <p class="eyebrow">PERFIL</p>
+                    <h2>Tu información</h2>
+                  </div>
+                  <span class="details-accent" aria-hidden="true"></span>
+                </div>
+
+                <ion-list class="details-list" lines="none">
+                  <div class="detail-row">
+                    <span class="detail-icon"><ion-icon name="person-outline" aria-hidden="true"></ion-icon></span>
+                    <div class="detail-copy">
+                      <span class="detail-label">Nombre</span>
+                      <span class="detail-value">{{ displayValue('nombre') }}</span>
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-icon"><ion-icon name="card-outline" aria-hidden="true"></ion-icon></span>
+                    <div class="detail-copy">
+                      <span class="detail-label">Cédula</span>
+                      <span class="detail-value">{{ displayValue('cedula') }}</span>
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-icon"><ion-icon name="barbell-outline" aria-hidden="true"></ion-icon></span>
+                    <div class="detail-copy">
+                      <span class="detail-label">Membresía</span>
+                      <ion-chip class="membership-chip" color="danger">{{ membershipName }}</ion-chip>
+                    </div>
+                  </div>
+                  <div class="detail-row">
+                    <span class="detail-icon"><ion-icon name="calendar-outline" aria-hidden="true"></ion-icon></span>
+                    <div class="detail-copy">
+                      <span class="detail-label">Fecha de vencimiento</span>
+                      <span class="detail-value">{{ expiryDate }}</span>
+                    </div>
+                  </div>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      } @else {
+        <ion-row>
+          <ion-col class="empty-state">
+            <h1>Sesión no disponible</h1>
+            <p>Vuelve a iniciar sesión para consultar tu membresía.</p>
+          </ion-col>
+        </ion-row>
+      }
+    </ion-grid>
+  </main>
+</ion-content>

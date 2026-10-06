@@ -1,0 +1,20 @@
+<ion-content class="gate-content" [fullscreen]="true">
+  <main class="gate-layout" [class.allowed]="status === 'allowed'" [class.denied]="status === 'denied'">
+    <img class="gate-logo" src="assets/logo.png" alt="Xtreme Group Gym">
+
+    @if (status === 'checking') {
+      <div class="gate-status checking" role="status" aria-live="polite">
+        <ion-spinner name="crescent" aria-label="Verificando"></ion-spinner>
+        <p>{{ statusMessage }}</p>
+      </div>
+    } @else {
+      <div class="gate-status result" role="status" aria-live="polite">
+        <ion-icon
+          [name]="status === 'allowed' ? 'checkmark-circle-outline' : 'close-circle-outline'"
+          aria-hidden="true"
+        ></ion-icon>
+        <p>{{ statusMessage }}</p>
+      </div>
+    }
+  </main>
+</ion-content>

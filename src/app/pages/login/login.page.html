@@ -1,0 +1,17 @@
+<ion-content class="photo-background login-content" [fullscreen]="true">
+  <div class="dark-overlay" aria-hidden="true"></div>
+  <main class="login-layout">
+    @if (notice) {
+      <p class="login-notice" role="alert">{{ notice }}</p>
+    }
+    <div class="login-logo">
+      <img src="assets/logo.png" alt="Xtreme Group Gym">
+    </div>
+    <div class="login-action">
+      <ion-button class="primary-button" expand="block" (click)="openCodeEntry()">
+        <ion-icon slot="start" name="log-in-outline" aria-hidden="true"></ion-icon>
+        Ingreso por Código
+      </ion-button>
+    </div>
+  </main>
+</ion-content>
