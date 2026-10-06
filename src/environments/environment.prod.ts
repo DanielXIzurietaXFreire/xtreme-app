@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: 'https://YOUR_BACKEND_HOST',
+  backendUrl: 'https://xtreme-back-a59t.onrender.com',
 };
